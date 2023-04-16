@@ -149,7 +149,7 @@ const EditPost = ({ post }) => {
 
 export const getStaticProps = async (context) => {
   const { id } = context?.params;
-  const res = await fetch(`http://localhost:3000/api/post?id=${id}`);
+  const res = await fetch(`http://127.0.0.1:3000/api/post?id=${id}`);
   const post = await res.json();
 
   return {
@@ -160,7 +160,7 @@ export const getStaticProps = async (context) => {
 };
 
 export const getStaticPaths = async () => {
-  const res = await fetch("http://localhost:3000/api/post");
+  const res = await fetch("http://127.0.0.1:3000/api/post");
   const posts = await res.json();
 
   const paths = posts?.map((post) => ({

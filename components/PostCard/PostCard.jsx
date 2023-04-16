@@ -34,9 +34,9 @@ const PostCard = ({
           {title}
         </Link>
         <p className="mb-3 flex flex-wrap items-center gap-3">
-          <h1 className="hover:underline text-lg text-blue-400">
+          <span className="hover:underline text-lg text-blue-400">
             {author?.username}
-          </h1>
+          </span>
           <span className="text-sm">
             {format(new Date(createdAt), "MMMM dd, yyyy 'at' h:mm aaaa")}
           </span>

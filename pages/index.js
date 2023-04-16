@@ -16,7 +16,7 @@ const Home = ({ posts }) => {
 };
 
 export const getServerSideProps = async () => {
-  const res = await fetch("http://localhost:3000/api/post");
+  const res = await fetch("http://127.0.0.1:3000/api/post");
   const posts = await res.json();
 
   return {
