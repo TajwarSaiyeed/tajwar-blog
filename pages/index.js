@@ -16,7 +16,7 @@ const Home = ({ posts }) => {
 };
 
 Home.getInitialProps = async () => {
-  const res = await fetch("http://localhost:3000/api/post");
+  const res = await fetch("https://tajwar-blog.vercel.app/api/post");
   const posts = await res.json();
 
   return {
