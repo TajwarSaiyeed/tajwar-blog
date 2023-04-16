@@ -1,17 +1,8 @@
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { format } from "date-fns";
 
-const PostCard = ({
-  _id,
-  title,
-  summary,
-  image,
-  content,
-  createdAt,
-  author,
-}) => {
+const PostCard = ({ _id, title, summary, image, createdAt, author }) => {
   return (
     <div className="flex flex-col sm:flex-row items-start duration-300 hover:bg-slate-100 justify-center gap- border-[1px] overflow-hidden rounded-lg">
       <Link

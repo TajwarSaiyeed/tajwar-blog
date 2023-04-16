@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useUser } from "@/context/UserContext";
 
 const Header = () => {
-  const { user, loading, logout } = useUser();
+  const { user, logout } = useUser();
 
   return (
     <header className="flex z-[9999] sticky top-0 bg-slate-50 border-b-[1px] border-gray-100 text-black shadow-sm gap-4 px-2 sm:px-5 duration-300 py-3 w-full justify-between items-center">

@@ -1,7 +1,7 @@
 import Loading from "@/components/Loading";
 import { useUser } from "@/context/UserContext";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const Register = () => {
   const [redirect, setRedirect] = useState(false);

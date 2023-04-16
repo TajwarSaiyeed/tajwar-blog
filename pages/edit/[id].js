@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Loading from "@/components/Loading";
 import { useUser } from "@/context/UserContext";
 import { useRouter } from "next/router";
@@ -147,7 +147,7 @@ const EditPost = ({ post }) => {
   );
 };
 
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
   const { id } = context?.params;
   const res = await fetch(`http://127.0.0.1:3000/api/post?id=${id}`);
   const post = await res.json();
@@ -156,20 +156,6 @@ export const getStaticProps = async (context) => {
     props: {
       post,
     },
-  };
-};
-
-export const getStaticPaths = async () => {
-  const res = await fetch("http://127.0.0.1:3000/api/post");
-  const posts = await res.json();
-
-  const paths = posts?.map((post) => ({
-    params: { id: post?._id },
-  }));
-
-  return {
-    paths,
-    fallback: false,
   };
 };
 
