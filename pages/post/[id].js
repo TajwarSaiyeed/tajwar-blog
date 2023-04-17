@@ -148,7 +148,7 @@ const PostDetails = ({ post }) => {
 
 export const getServerSideProps = async (context) => {
   const { id } = context?.params;
-  const res = await fetch(`https://tajwar-blog.vercel.app/api/post?id=${id}`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/post?id=${id}`);
   const post = await res.json();
 
   return {

@@ -1,7 +1,7 @@
-import { Post } from "@/Models/Post";
 import { connectDB } from "@/libs/MongoConnect";
+import { Post } from "@/Models/Post";
+import { User } from "@/Models/Register";
 import jwt from "jsonwebtoken";
-import mongoose from "mongoose";
 
 export const config = {
   api: {
@@ -38,7 +38,11 @@ export default async function handler(req, res) {
   } else if (req.method === "GET" && req.query.id) {
     const id = req.query.id;
     try {
-      const post = await Post.findById(id).populate("author", ["username"]);
+      const post = await Post.findById(id).populate(
+        "author",
+        ["username"],
+        User
+      );
       res.status(200).json(post);
     } catch (error) {
       res.status(400).json({ error: error.message });
@@ -47,7 +51,7 @@ export default async function handler(req, res) {
     const userId = req.query.userId;
     try {
       const posts = await Post.find({ author: userId })
-        .populate("author", ["username"])
+        .populate("author", ["username"], User)
         .sort({ createdAt: -1 })
         .limit(10);
       res.status(200).json(posts);
@@ -108,9 +112,10 @@ export default async function handler(req, res) {
   } else {
     try {
       const posts = await Post.find({})
-        .populate("author", ["username"])
+        .populate("author", ["username"], User)
         .sort({ createdAt: -1 })
         .limit(10);
+
       res.status(200).json(posts);
     } catch (error) {
       res.status(400).json({ error: error.message });

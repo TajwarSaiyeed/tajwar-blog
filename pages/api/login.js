@@ -1,7 +1,7 @@
-import { User } from "@/Models/Register";
 import { connectDB } from "@/libs/MongoConnect";
-import becrypt from "bcryptjs";
+import { User } from "@/Models/Register";
 import { setCookie } from "cookies-next";
+import becrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 export default async function handler(req, res) {

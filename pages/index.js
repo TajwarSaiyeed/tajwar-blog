@@ -15,12 +15,14 @@ const Home = ({ posts }) => {
   );
 };
 
-Home.getInitialProps = async () => {
-  const res = await fetch("https://tajwar-blog.vercel.app/api/post");
+export const getServerSideProps = async () => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/post`);
   const posts = await res.json();
 
   return {
-    posts,
+    props: {
+      posts,
+    },
   };
 };
 
