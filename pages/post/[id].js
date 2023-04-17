@@ -10,14 +10,14 @@ import { useEffect, useState } from "react";
 const PostDetails = ({ post }) => {
   console.log("post", post);
   const { user, loading } = useUser();
-  const router = useRouter();
+  console.log(loading, user);
   const [authorPosts, setAuthorPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [redirect, setRedirect] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
-    console.log("post", post);
     if (!post) {
       return;
     }
