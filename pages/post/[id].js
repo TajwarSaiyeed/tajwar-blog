@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 const PostDetails = ({ post }) => {
+  console.log("post", post);
   const { user, loading } = useUser();
   const router = useRouter();
   const [authorPosts, setAuthorPosts] = useState([]);
@@ -16,6 +17,7 @@ const PostDetails = ({ post }) => {
   const [deleteLoading, setDeleteLoading] = useState(false);
 
   useEffect(() => {
+    console.log("post", post);
     if (!post) {
       return;
     }
