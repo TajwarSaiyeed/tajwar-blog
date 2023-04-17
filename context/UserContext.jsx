@@ -14,6 +14,7 @@ const UserContextProvider = ({ children }) => {
       });
       const data = await res.json();
       setUser(null);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -30,6 +31,7 @@ const UserContextProvider = ({ children }) => {
 
         if (data?.user || data?.user === null) {
           setUser(data.user);
+          setLoading(false);
         }
       } catch (error) {
         // console.log(error);
