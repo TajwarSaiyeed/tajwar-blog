@@ -41,7 +41,7 @@ const UserContextProvider = ({ children }) => {
     };
 
     return () => checkUser();
-  }, []);
+  }, [loading]);
 
   const info = {
     user,

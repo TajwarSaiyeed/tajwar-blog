@@ -36,6 +36,7 @@ const Login = () => {
   };
 
   if (loading) {
+    console.log("loading login page");
     return <Loading />;
   }
   if (user || loading || redirect) {

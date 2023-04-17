@@ -27,6 +27,7 @@ const Register = () => {
     }
   };
   if (loading) {
+    console.log("loading register page");
     return <Loading />;
   }
   if (user || loading || redirect) {
