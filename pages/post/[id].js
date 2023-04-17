@@ -21,9 +21,9 @@ const PostDetails = ({ post }) => {
     if (!post) {
       return;
     }
-    setIsLoading(true);
 
     const allPost = async () => {
+      setIsLoading(true);
       const res = await fetch(`/api/post?userId=${post?.author?._id}`);
       const posts = await res.json();
       setAuthorPosts(posts);
