@@ -79,10 +79,10 @@ const PostDetails = ({ post }) => {
               by {post?.author?.username}
             </p>
             <p>
-              {format(
+              {/* {format(
                 new Date(post?.createdAt),
                 "MMMM dd, yyyy 'at' h:mm aaaa"
-              )}
+              )} */}
             </p>
           </div>
           <div className="w-full h-96 flex justify-center items-center overflow-hidden">

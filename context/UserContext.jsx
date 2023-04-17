@@ -28,7 +28,7 @@ const UserContextProvider = ({ children }) => {
         });
         const data = await res.json();
 
-        if (data?.user) {
+        if (data?.user || data?.user === null) {
           setUser(data.user);
         }
       } catch (error) {
@@ -39,7 +39,7 @@ const UserContextProvider = ({ children }) => {
     };
 
     return () => checkUser();
-  }, [loading]);
+  }, []);
 
   const info = {
     user,

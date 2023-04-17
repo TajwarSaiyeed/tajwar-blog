@@ -29,7 +29,7 @@ const PostCard = ({ _id, title, summary, image, createdAt, author }) => {
             {author?.username}
           </span>
           <span className="text-sm">
-            {format(new Date(createdAt), "MMMM dd, yyyy 'at' h:mm aaaa")}
+            {/* {format(new Date(createdAt), "MMMM dd, yyyy 'at' h:mm aaaa")} */}
           </span>
         </p>
         <p className="text-[14px] md:text-[16px] text-justify">
