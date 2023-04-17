@@ -1,7 +1,7 @@
-import Loading from "@/components/Loading";
-import { useUser } from "@/context/UserContext";
-import { useRouter } from "next/router";
 import { useState } from "react";
+import { useRouter } from "next/router";
+import { useUser } from "@/context/UserContext";
+import Loading from "@/components/Loading";
 
 const Login = () => {
   const [redirect, setRedirect] = useState(false);
