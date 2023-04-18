@@ -7,15 +7,23 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-const PostDetails = ({ post }) => {
-  console.log("post", post);
-  const { user, loading } = useUser();
-  console.log(loading, user);
+const PostDetails = () => {
+  const [post, setPost] = useState(null);
+  const { user } = useUser();
   const [authorPosts, setAuthorPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [redirect, setRedirect] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    const getPost = async () => {
+      const res = await fetch(`/api/post?id=${router.query.id}`);
+      const data = await res.json();
+      setPost(data);
+    };
+    return () => getPost();
+  }, [user]);
 
   useEffect(() => {
     if (!post) {
@@ -52,8 +60,6 @@ const PostDetails = ({ post }) => {
     }
   };
 
-  if (loading) return <Loading />;
-
   if (redirect) {
     router.push("/");
   }
@@ -81,10 +87,10 @@ const PostDetails = ({ post }) => {
               by {post?.author?.username}
             </p>
             <p>
-              {/* {format(
+              {format(
                 new Date(post?.createdAt),
                 "MMMM dd, yyyy 'at' h:mm aaaa"
-              )} */}
+              )}
             </p>
           </div>
           <div className="w-full h-96 flex justify-center items-center overflow-hidden">
@@ -146,18 +152,6 @@ const PostDetails = ({ post }) => {
       </div>
     </>
   );
-};
-
-export const getServerSideProps = async (context) => {
-  const { id } = context?.params;
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/post?id=${id}`);
-  const post = await res.json();
-
-  return {
-    props: {
-      post,
-    },
-  };
 };
 
 export default PostDetails;
