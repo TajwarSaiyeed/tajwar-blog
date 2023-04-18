@@ -11,7 +11,7 @@ const PostDetails = () => {
   const [post, setPost] = useState(null);
   const { user } = useUser();
   const [authorPosts, setAuthorPosts] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [redirect, setRedirect] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
   const router = useRouter();
@@ -23,7 +23,9 @@ const PostDetails = () => {
       setPost(data);
     };
     return () => getPost();
-  }, [user]);
+  }, []);
+
+  console.log("post", post);
 
   useEffect(() => {
     if (!post) {
@@ -59,6 +61,8 @@ const PostDetails = () => {
       console.log("error", error);
     }
   };
+
+  if (!post) return <Loading />;
 
   if (redirect) {
     router.push("/");
