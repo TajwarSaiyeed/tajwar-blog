@@ -46,13 +46,7 @@ export default async function handler(req, res) {
     } catch (error) {
       res.status(400).json(error);
     }
-  } else if (req.method === "GET") {
-    try {
-      const result = await User.find({});
-
-      res.status(200).send(result);
-    } catch (error) {
-      res.status(400).json(error);
-    }
+  } else {
+    res.status(400).json({ message: "Invalid request method" });
   }
 }

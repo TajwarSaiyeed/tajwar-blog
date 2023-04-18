@@ -6,6 +6,7 @@ const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  console.log(user);
   const logout = async () => {
     try {
       const res = await fetch("/api/profile", {
@@ -31,8 +32,8 @@ const UserContextProvider = ({ children }) => {
 
         if (data?.user || data?.user === null) {
           setUser(data.user);
-          setLoading(false);
         }
+        setLoading(false);
       } catch (error) {
         // console.log(error);
       } finally {

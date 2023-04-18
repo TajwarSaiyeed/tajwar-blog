@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useUser } from "@/context/UserContext";
 import Loading from "@/components/Loading";
@@ -35,13 +35,15 @@ const Login = () => {
     }
   };
 
-  if (loading) {
-    console.log("loading login page");
-    return <Loading />;
-  }
-  if (user || loading || redirect) {
+  if (redirect) {
     router.push("/");
   }
+
+  useEffect(() => {
+    if (user) {
+      router.push("/");
+    }
+  }, [user]);
 
   return (
     <form

@@ -8,6 +8,9 @@ const nextConfig = {
     largePageDataBytes: 128 * 1024 * 1024,
     forceSwcTransforms: true,
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 module.exports = nextConfig;

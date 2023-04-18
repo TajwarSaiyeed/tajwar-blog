@@ -1,11 +1,10 @@
-import Loading from "@/components/Loading";
 import { useUser } from "@/context/UserContext";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Register = () => {
   const [redirect, setRedirect] = useState(false);
-  const { user, setUser, loading } = useUser();
+  const { user, setUser } = useUser();
   const router = useRouter();
 
   const handleRegister = async (e) => {
@@ -26,14 +25,15 @@ const Register = () => {
       console.log(error);
     }
   };
-  if (loading) {
-    console.log("loading register page");
-    return <Loading />;
-  }
-  if (user || loading || redirect) {
+
+  if (redirect) {
     router.push("/");
   }
-
+  useEffect(() => {
+    if (user) {
+      router.push("/");
+    }
+  }, [user]);
   return (
     <form
       className="max-w-[600px] w-[500px] min-w-[400px] flex flex-col gap-2 border-[1px] rounded-md px-5 justify-center items-center py-10  bg-white shadow-md mt-10"
